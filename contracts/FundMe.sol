@@ -2,30 +2,48 @@
 //Withdraw funds
 //Set a minimum funding value in USD
 // SPDX-License-Identifier: MIT
-
+//pramge
 pragma solidity ^0.8.9;
-
+//imports
 import "./PriceConverter.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 //constant, immutable
-error NotOwner();
+//error codes
+error FundMe__NotOwner();
 
+//interfaces, library, contracts
+/** @title A contract for crowdfunding
+ *  @author Alex Yun
+ *  @notice This contract is to demo a sample funding contract
+ *  @dev This implements price feeds as our library
+ */
 contract FundMe {
+    //type declarations
     using PriceConverter for uint256;
-
+    // State variables
     uint256 public constant MINIMUM_USD = 50 * 1e18; //gas inefficient
-
     address[] public funders;
     mapping(address => uint256) public addressToAmountFunded;
-
     address public immutable i_owner;
     AggregatorV3Interface public priceFeed;
+
+    modifier onlyOwner() {
+        require(msg.sender == i_owner, "Sender is not owner!");
+        if (msg.sender != i_owner) {
+            revert FundMe__NotOwner();
+        }
+        _;
+    }
 
     constructor(address priceFeedAddress) {
         i_owner = msg.sender;
         priceFeed = AggregatorV3Interface(priceFeedAddress);
     }
 
+    /**
+     *  @notice This function fund the contract
+     *  @dev This implements price feeds as our library
+     */
     function fund() public payable {
         require(
             msg.value.getConversionRate(priceFeed) >= MINIMUM_USD,
@@ -48,22 +66,4 @@ contract FundMe {
         }("");
         require(callSuccess, "Call failed!");
     }
-
-    modifier onlyOwner() {
-        require(msg.sender == i_owner, "Sender is not owner!");
-        if (msg.sender != i_owner) {
-            revert NotOwner();
-        }
-        _;
-    }
-
-    receive() external payable {
-        fund();
-    }
-
-    fallback() external payable {
-        fund();
-    }
-
-    //fallback
 }
