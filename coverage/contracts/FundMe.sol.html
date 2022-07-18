@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for contracts/FundMe.sol</title>
+    <title>Code coverage report for contracts\FundMe.sol</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">38.46% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/13</span>
+        <span class='fraction'>13/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">62.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/8</span>
+        <span class='fraction'>5/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">93.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/15</span>
+        <span class='fraction'>14/15</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -142,11 +142,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,26 +159,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//Get funds from users
@@ -210,9 +210,9 @@ contract FundMe {
     address public immutable i_owner;
     AggregatorV3Interface public priceFeed;
 &nbsp;
-<span class="fstat-no" title="function not covered" >    modifier onlyOwner() {</span>
-<span class="cstat-no" title="statement not covered" >        require(msg.sender == i_owner, "Sender is not owner!")</span>;
-<span class="cstat-no" title="statement not covered" >        if (msg.sender != i_owner) {</span>
+    modifier onlyOwner() {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(msg.sender == i_owner, "Sender is not owner!");
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (msg.sender != i_owner) {
             revert FundMe__NotOwner();
         }
         _;
@@ -238,16 +238,16 @@ contract FundMe {
             msg.value;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function withdraw() public onlyOwner {</span>
-<span class="cstat-no" title="statement not covered" >        for (uint256 i = 0; i &lt; funders.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >            address funder = funders[i];</span>
-<span class="cstat-no" title="statement not covered" >            addressToAmountFunded[funder] = 0</span>;
+    function withdraw() public onlyOwner {
+        for (uint256 i = 0; i &lt; funders.length; i++) {
+            address funder = funders[i];
+            addressToAmountFunded[funder] = 0;
         }
-<span class="cstat-no" title="statement not covered" >        funders = new address[](0)</span>;
-<span class="cstat-no" title="statement not covered" >        (bool callSuccess, ) = payable(msg.sender).call{</span>
+        funders = new address[](0);
+        (bool callSuccess, ) = payable(msg.sender).call{
             value: address(this).balance
         }("");
-<span class="cstat-no" title="statement not covered" >        require(callSuccess, "Call failed!")</span>;
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(callSuccess, "Call failed!");
     }
 }
 &nbsp;</pre></td></tr>
@@ -256,7 +256,7 @@ contract FundMe {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 17 2022 01:07:27 GMT+0900 (Korean Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 18 2022 10:07:08 GMT+0900 (대한민국 표준시)
 </div>
 </div>
 <script src="../prettify.js"></script>
