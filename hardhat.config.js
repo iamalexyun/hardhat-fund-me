@@ -22,9 +22,9 @@ module.exports = {
     },
   },
   gasReporter: {
-    enabled: false,
-    outputFile: "gasReport.txt",
-    noColors: true,
+    enabled: true,
+    // outputFile: "gasReport.txt",
+    // noColors: true,
     currency: "USD",
     coinmarketcap: COINMARKETCAP_API_KEY,
   },

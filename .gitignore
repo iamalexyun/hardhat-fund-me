@@ -4,3 +4,4 @@
 .env
 /coverage
 coverage.json
+gasReport.txt
