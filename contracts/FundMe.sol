@@ -67,7 +67,7 @@ contract FundMe {
         require(callSuccess, "Call failed!");
     }
 
-    function cheaperWithdraw() public payable onlyOwner {
+    function cheaperWithdraw() public onlyOwner {
         address[] memory funders = s_funders;
         for (uint256 i = 0; i < funders.length; i++) {
             address funder = funders[i];
